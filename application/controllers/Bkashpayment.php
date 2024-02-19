@@ -44,7 +44,7 @@ class Bkashpayment extends CI_Controller {
         'app_secret'=>$this->credenital['APP_SECRET']);
         $body_data_json=json_encode($body_data);
 
-       $response = $this->curlWithBody('/tokenized/checkout/token/grant','POST',$header,$body_data_json); 
+       $response = $this->curlWithBody('https://checkout.sandbox.bka.sh/v1.2.0-beta/checkout/token/grant','POST',$header,$body_data_json); 
     
    $token = json_decode($response)->id_token;
    

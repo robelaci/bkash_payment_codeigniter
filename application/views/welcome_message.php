@@ -110,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
   <div class="center">
-    <form action="index.php/bkashpayment" method="POST">
+    <form action="<?php echo base_url();?>index.php/bkashpayment" method="POST">
       <input type="text" id="amount" name="amount" placeholder="Enter your amount"><br>
       <button type="submit" id="bKash_button">Pay With BKash</button>
     </form>
