@@ -44,7 +44,7 @@ class Bkashpayment extends CI_Controller {
         'app_secret'=>$this->credenital['APP_SECRET']);
         $body_data_json=json_encode($body_data);
 
-       $response = $this->curlWithBody('https://checkout.sandbox.bka.sh/v1.2.0-beta/checkout/token/grant','POST',$header,$body_data_json); 
+       $response = $this->curlWithBody('/tokenized/checkout/token/grant','POST',$header,$body_data_json); 
     
    $token = json_decode($response)->id_token;
    
@@ -159,8 +159,14 @@ class Bkashpayment extends CI_Controller {
         curl_setopt($curl,CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl,CURLOPT_POSTFIELDS, $body_data_json);
-        curl_setopt($curl,CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+        // curl_setopt($curl,CURLOPT_FOLLOWLOCATION, 1);
+        // curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+
+		
+		curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
         $response = curl_exec($curl);
         curl_close($curl);
         return $response;
