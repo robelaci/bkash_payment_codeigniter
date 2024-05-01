@@ -12,7 +12,7 @@ class Bkashpayment extends CI_Controller {
 		$this->load->helper('url'); 
         $this->load->config('bkash');
      
-        $test_mode =1;
+        $test_mode =0;
         if($test_mode==1){
             $this->base_url = 'https://tokenized.sandbox.bka.sh/v1.2.0-beta'; 
         }else{
@@ -59,11 +59,11 @@ class Bkashpayment extends CI_Controller {
            $allRequest = $_GET;
         if(isset($allRequest['status']) && $allRequest['status'] == 'failure'){
           
-			echo $allRequest['status'] . ' <a href="' . site_url('/') . '">Try again</a>';
+			echo $allRequest['status'] . ' <a href="https://noboit.com/Service_product.php">Try again</a>';
 
         }else if(isset($allRequest['status']) && $allRequest['status'] == 'cancel'){
            
-			echo $allRequest['status'] . ' <a href="' . site_url('/') . '">Try again</a>';
+			echo $allRequest['status'] . ' <a href="https://noboit.com/Service_product.php">Try again</a>';
 
         }else{
             
@@ -75,7 +75,7 @@ class Bkashpayment extends CI_Controller {
     
             if(array_key_exists("statusCode",$arr) && $arr['statusCode'] != '0000'){
                 
-				echo $arr['statusMessage'].  ' <a href="' . site_url('/') . '">Try again</a>';
+				echo $arr['statusMessage'].  ' <a href="https://noboit.com/Service_product.php">Try again</a>';
 
 
 				die();
@@ -86,7 +86,7 @@ class Bkashpayment extends CI_Controller {
                 // if execute api failed to response
                 sleep(1);
                 
-                redirect(site_url('/'));  
+                redirect('https://noboit.com/Service_product.php');  
                 // $query = $this->queryPayment($allRequest['paymentID']);
                 // return view('CheckoutURL.success')->with([
                 //     'response' => $query
@@ -95,7 +95,7 @@ class Bkashpayment extends CI_Controller {
             
     //database operation
 
-	echo $response .  '<br> <a href="' . site_url('/') . '">Try again</a>';
+	echo $response .  '<br> <a href="https://noboit.com/Service_product.php">Try again</a>';
 
         }
 
@@ -119,7 +119,7 @@ class Bkashpayment extends CI_Controller {
          $body_data = array(
             'mode' => '0011',
             'payerReference' => ' ',
-            'callbackURL' =>  "".base_url()."index.php/"."Bkashpayment/Callback",
+            'callbackURL' =>  "".base_url()."index.php/"."bkash-callback",
             'amount' => $amount ? $amount :5,
             'currency' => 'BDT',
             'intent' => 'sale',

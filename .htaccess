@@ -1,9 +1,8 @@
-#<IfModule mime_module>
-
-# AddHandler application/x-httpd-ea-php72\_\_\_lsphp .php .php7 .phtml
-
-#</IfModule>
-RewriteEngine On
+DirectoryIndex index.php
+RewriteEngine on                       
+RewriteCond $1 !^(index\.php|(.*)\.swf|forums|images|css|downloads|js|robots\.txt|favicon\.ico)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.\*)$ index.php?/$1 [L]
+RewriteRule ^(.*)$ ./index.php?$1 [L,QSA] 
+
+php_value max_input_vars 30000
