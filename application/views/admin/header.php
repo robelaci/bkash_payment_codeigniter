@@ -5,13 +5,13 @@
 <aside id="leftsidebar" class="sidebar">
     <div class="navbar-brand">
         <button class="btn-menu ls-toggle-btn" type="button"><i class="zmdi zmdi-menu"></i></button>
-        <a href="index.html"><img src="assets/images/logo.png" width="25" alt="Aero"><span class="m-l-10">Nobo IT</span></a>
+        <a href="index.html"><img src="<?php echo base_url().'admin/assets/images/logo.png'?>" width="25" alt="Aero"><span class="m-l-10">Nobo IT</span></a>
     </div>
     <div class="menu">
         <ul class="list">
             <li>
                 <div class="user-info">
-                    <a class="image" href="profile.html"><img src="assets/images/mosarf.jpeg" alt="User"></a>
+                    <a class="image" href="profile.html"><img src="<?php echo base_url().'admin/assets/images/mosarf.jpeg'?>" alt="User"></a>
                     <div class="detail">
                         <h4>Mosarf</h4>
                         <small>Super Admin</small>

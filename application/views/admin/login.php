@@ -26,7 +26,7 @@
 				
 					<form class="card auth_form" action="<?php echo base_url().'admin/login'?>" method="post">
 						<div class="header">
-							<img class="logo" src="assets/images/logo.png" alt="">
+							<img class="logo" src="<?php echo base_url().'admin/assets/images/logo.png'?>" alt="">
 							<h5>Log in</h5>
 						</div>
 						<div class="body">
@@ -67,7 +67,7 @@
 				</div>
 				<div class="col-lg-8 col-sm-12">
 					<div class="card">
-						<img src="<?php echo base_url()?>admin/assets/images/signin.svg" alt="Sign In" />
+						<img src="<?php echo base_url().'admin/assets/images/signin.svg'?>" alt="Sign In" />
 					</div>
 				</div>
 			</div>

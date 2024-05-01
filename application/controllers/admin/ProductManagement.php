@@ -8,7 +8,7 @@ class ProductManagement extends MY_Controller {
         
     }
 
-	public function category()
+	public function category($categoryID='')
 	{
 		
 		$data = [];
@@ -18,15 +18,32 @@ class ProductManagement extends MY_Controller {
 		$sql = "SELECT * FROM product_category where active='Y'";
 		$query = $this->db->query($sql);
 		if($query) {
-			$data['result'] = $query->result_array();
+			$data['items'] = $query->result_array();
 			// echo "<pre>",print_r($data);die();
 		}
 		$this->loadAdminView('admin/category',$data);
 	}
 
 	public function categoryAdd() {
-		print_r($_POST);
-		print_r($_FILES);die();
+		$category_name = $this->input->post('category_name',true);
+		$category_description = $this->input->post('category_description',true);
+		$category_image = uploadImage('category_image',['upload_path'=>'../assets/img/service/all']);
+		$category_image_name = $category_image['name'];
+		$dataToAdd = [
+			'category_name'=>$category_name,
+			'category_description'=>$category_description,
+			'category_image'=>$category_image_name,
+		];
+
+		$status = $this->db->insert('product_category',$dataToAdd);
+		if($status) {
+			setFlashMsg("Added Successfully");
+		} else {
+			setFlashMsg("Something went wrong");
+		}
+
+		return redirect('admin/category');
+		
 	}
 
 	public function getCategoryDetails() {

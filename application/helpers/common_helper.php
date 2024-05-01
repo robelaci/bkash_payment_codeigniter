@@ -75,3 +75,53 @@ if (!function_exists('getMsgWithHtml')) {
         return $messageHtml;
     }
 }
+
+
+// Upload Image
+function uploadImage($fileName,$uplaodOption = []) {
+      
+    try{
+        $ext = pathinfo($_FILES[$fileName]["name"], PATHINFO_EXTENSION);
+        
+        $prefix = "";
+        if(!empty($uplaodOption['prefix'])) {
+            $prefix = $uplaodOption['prefix']."_";            
+        }
+
+        if(!empty($uplaodOption['pre_defined_name'])) {
+            $newName = $prefix.$uplaodOption['pre_defined_name'].'.'.$ext;
+
+        } else {
+            $newName = $prefix.time().'_'.rand(1,10).'.'.$ext;
+        }
+        $tempname = $_FILES[$fileName]["tmp_name"]; 
+        
+        if(!empty($uplaodOption['upload_path'])) {
+            $folder = $uplaodOption['upload_path']."/";
+        } else {
+            $folder = "uploads/";
+        }
+        // if(!file_exists($folder)) {
+        //     mkdir($folder,0777);
+        // }
+        $fileLocation = $folder.$newName;
+        $status = move_uploaded_file($tempname, $fileLocation);
+
+        $response['success'] = false;
+        if($status) {
+            $response['success'] = true;
+            $response['name'] = $newName;        
+            $response['error'] = '';
+            if(isset($uplaodOption['move_different_path'])) {
+                rename($fileLocation, $uplaodOption['move_different_path'].$newName);
+            }
+        }
+       
+
+    }catch(\Exception $ex) {
+        $response['error'] = $ex->getMessage();
+
+    }
+    return $response;
+    
+}

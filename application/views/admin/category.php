@@ -6,20 +6,13 @@
 	</div>
 </div>
 
-<div class="container-fluid">
-	<!-- Input -->
-	<div class="row">
-		<form action="">
-			<input type="text" name="test" class="form-control">
-			<input type="submit" value="OKKK">
-		</form>
-	</div>
+<div class="container-fluid">	
 	<div class="row clearfix">
 		<div class="col-lg-12 col-md-12 col-sm-12">
-
 			<div class="card">
 				<div class="body">
-					<form class="form-horizontal" action="<?php echo base_url() . $action; ?>" method="post">
+					<?php echo getFlashMsg();?>
+					<form class="form-horizontal" action="<?php echo base_url() . $action; ?>" method="post" enctype="multipart/form-data">
 						<div class="row clearfix">
 							<div class="col-lg-6">
 								<div class="row form-group">
@@ -66,13 +59,54 @@
 
 						<div class="row clearfix">
 
-							<div class="col-sm-8 offset-sm-2">
-								<input type="submit" value="submit" class="btn btn-success">
+							<div class="col-sm-8 offset-sm-2">							
 								<button type="submit" class="btn btn-primary btn-round">Submit</button>
 							</div>
 						</div>
 					</form>
 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row clearfix">
+		<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="card">	
+				<div class="header">
+				<h2><strong>Category List</strong></h2>
+				</div>			
+				<div class="body">
+					
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Edit</th>
+									<th>Category Name</th>
+									<th>Category Details</th>
+									<th>Image</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach($items as $key=>$item){
+								?>
+								<tr>
+									<th scope="row"><?php echo $key+1;?></th>
+									<td><a href="<?php echo base_url().'admin/category/'. $item['product_category_id'];?>"  class="btn btn-sm btn-info">Edit</a></td>
+									<td><?php echo $item['category_name'];?></td>
+									<td><?php echo $item['category_description'];?></td>
+									<td><img src="<?php echo base_url().'../assets/img/service/all/'. $item['category_image'];?>" alt="category image" height="50px" width="auto"></td>
+								</tr>
+								<?php
+								}
+								?>
+								
+								
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
