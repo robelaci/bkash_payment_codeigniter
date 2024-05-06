@@ -85,9 +85,11 @@
                     <li><a href="icons-weather.html">Weather Icons</a></li>
                 </ul>
             </li>
-            <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Forms</span></a>
+            <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Product Management</span></a>
                 <ul class="ml-menu">
-                    <li class="active"><a href="<?php echo base_url()?>admin/category">Basic Form</a></li>
+                    <li class=""><a href="<?php echo base_url()?>admin/category">Category setup</a></li>
+                    <li class=""><a href="<?php echo base_url()?>admin/product">Product Add</a></li>
+                    <li class=""><a href="<?php echo base_url()?>admin/product-list">Product List</a></li>
                     <li><a href="advanced-form-elements.html">Advanced Form</a></li>
                     <li><a href="form-examples.html">Form Examples</a></li>
                     <li><a href="form-validation.html">Form Validation</a></li>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js " lang="en">
+<html lang="en">
 
 <!-- Mirrored from htmlstream.com/preview/unify-v1.6-production/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 23 Dec 2014 15:29:47 GMT -->
 <head>

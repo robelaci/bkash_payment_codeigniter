@@ -13,6 +13,7 @@
 				<div class="body">
 					<?php echo getFlashMsg();?>
 					<form class="form-horizontal" action="<?php echo base_url() . $action; ?>" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="product_category_id" value="<?php echo !empty($specific_item) ? $specific_item['product_category_id']: ''?>">
 						<div class="row clearfix">
 							<div class="col-lg-6">
 								<div class="row form-group">
@@ -21,7 +22,9 @@
 									</div>
 									<div class="col-lg-8 col-md-8 col-sm-12">
 										<div class="form-group">
-											<input type="text" id="category_name" name="category_name" class="form-control" placeholder="Enter Category Name">
+											<input type="text" id="category_name" name="category_name"
+												value="<?php echo !empty($specific_item) ? $specific_item['category_name']: ''?>"
+											 class="form-control" placeholder="Enter Category Name">
 										</div>
 									</div>
 
@@ -33,7 +36,7 @@
 									</div>
 									<div class="col-lg-8 col-md-8 col-sm-12">
 										<div class="form-group">
-											<textarea rows="4" id="category_description" name="category_description" class="form-control" placeholder="Please type what you want..."></textarea>
+											<textarea rows="4" id="category_description" name="category_description" class="form-control" placeholder="Please type what you want..."><?php echo !empty($specific_item) ? $specific_item['category_description']: ''?></textarea>
 
 										</div>
 									</div>
@@ -48,7 +51,9 @@
 									</div>
 									<div class="col-lg-8 col-md-8 col-sm-12">
 										<div class="form-group">
-											<input type="file" id="category_image" name="category_image" class="dropify">
+											<?php $specificImage = !empty($specific_item) ? base_url().'../assets/img/service/all/'. $specific_item['category_image'] : ''?>
+											<input type="file" id="category_image" name="category_image" class="dropify"
+												data-default-file="<?php echo $specificImage;?>">
 
 										</div>
 									</div>
