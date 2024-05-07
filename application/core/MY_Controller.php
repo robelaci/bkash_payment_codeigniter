@@ -6,6 +6,20 @@ class MY_Controller extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+
+		$alldata = $this->session->userdata('alldata');
+
+        if (!$alldata) {
+            if (!$this->session->userdata('logged_in')) {
+                if ($this->input->is_ajax_request()) {
+                    echo "valid_script = true; window.location = '" . site_url('/admin/login') . "'";
+                    exit();
+                } else {
+                    redirect('admin/login');
+                }
+            }
+        }
+
     }
 
     public function loadView($page, $data = [],$template = 'master') {

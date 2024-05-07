@@ -1,18 +1,8 @@
-<div class="block-header">
-	<div class="row">
-		<div class="col-lg-7 col-md-6 col-sm-12">
-			<h2><?php echo isset($title) ? $title : 'Title'; ?></h2>
-		</div>
-	</div>
-</div>
-
 <div class="container-fluid">
 	<div class="row clearfix">
 		<div class="col-lg-12 col-md-12 col-sm-12">
 			<div class="card">	
-				<div class="header">
-				<h2><strong>Product List</strong></h2>
-				</div>			
+							
 				<div class="body">
 					
 					<div class="table-responsive">

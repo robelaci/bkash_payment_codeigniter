@@ -126,6 +126,9 @@ class ProductManagement extends MY_Controller {
 	}
 
 	public function productList() {
+		$data = [];
+		$data['title'] = "Product List";
+		
 		$sql = "SELECT p.*,pc.category_name FROM product p 
 					join product_category pc on pc.product_category_id=p.category_id";
 		$query = $this->db->query($sql);

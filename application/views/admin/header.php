@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </li>
-            <li><a href="index.html"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
+            <li><a href="<?php echo base_url()?>admin"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
             
             
             <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Product Management</span></a>
@@ -28,6 +28,8 @@
                     <li class=""><a href="<?php echo base_url()?>admin/product-list">Product List</a></li>                    
                 </ul>
             </li>
+            <li><a href="<?php echo base_url()?>admin/logout"><i class="zmdi zmdi-power"></i><span>Logout</span></a></li>
+
         </ul>
     </div>
 </aside>

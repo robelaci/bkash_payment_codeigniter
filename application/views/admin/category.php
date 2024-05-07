@@ -1,10 +1,3 @@
-<div class="block-header">
-	<div class="row">
-		<div class="col-lg-7 col-md-6 col-sm-12">
-			<h2><?php echo isset($title) ? $title : 'Title'; ?></h2>
-		</div>
-	</div>
-</div>
 
 <div class="container-fluid">	
 	<div class="row clearfix">
