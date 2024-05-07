@@ -62,6 +62,6 @@ $route['bkash-callback'] = 'Bkashpayment/Callback';
 $route['admin/login'] = 'admin/Authentication/login';
 $route['admin/category(/:any)?'] = 'admin/ProductManagement/category$1';
 $route['admin/category-add'] = 'admin/ProductManagement/categoryAdd';
-$route['admin/product'] = 'admin/ProductManagement/product';
+$route['admin/product(/:any)?'] = 'admin/ProductManagement/product$1';
 $route['admin/product-add'] = 'admin/ProductManagement/productAdd';
 $route['admin/product-list'] = 'admin/ProductManagement/productList';

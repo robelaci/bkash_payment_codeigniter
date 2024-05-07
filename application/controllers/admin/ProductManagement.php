@@ -65,19 +65,18 @@ class ProductManagement extends MY_Controller {
 		
 	}
 
-	public function product(){
+	public function product($product_id=''){
 		$data = [];
 		$data['title'] = "Product Add Management";
 		$data['action'] = "admin/product-add";
-
-		$data['product_id'] = $product_id = $this->input->get('product_id');
+		
 		if(!empty($product_id)) {
-
-			$sql = "SELECT * FROM product where active='Y' and product_id='$product_id'";
+			$sql = "SELECT * FROM product where product_id='$product_id'";
 			$query = $this->db->query($sql);
-			if($query) {
-				$data['specific_item'] = $query->result_array();
+			if($query && !empty($result = $query->result_array())) {
+				$data['specific_item'] = $result[0];
 			}
+			// echo "<pre>",print_r($data['specific_item']);die();
 		}
 		// get Product Category list
 		$sql = "SELECT * FROM product_category where active='Y'";
@@ -102,10 +101,10 @@ class ProductManagement extends MY_Controller {
     	$dataToAdd['product_slug'] = strtolower(str_replace(" ","-",$dataToAdd['product_name']));
     	$dataToAdd['product_price'] = $this->input->post('product_price',true);
     	$dataToAdd['category_id'] = $this->input->post('category_id',true);
-    	$dataToAdd['product_desription'] = $this->input->post('product_desription',true);
+    	$dataToAdd['product_description'] = $this->input->post('product_description',true);
 
 		if(!empty($_FILES['product_image']['tmp_name'])) {
-			$uploaded_product_image = uploadImage('product_image',['upload_path'=>'../assets/img/service/all']);
+			$uploaded_product_image = uploadImage('product_image',['upload_path'=>'../assets/img/service/all/subservice']);
 			$dataToAdd['product_image'] = $uploaded_product_image['name'];
 		}
 
@@ -124,6 +123,19 @@ class ProductManagement extends MY_Controller {
 
 		return redirect('admin/product');
 		
+	}
+
+	public function productList() {
+		$sql = "SELECT p.*,pc.category_name FROM product p 
+					join product_category pc on pc.product_category_id=p.category_id";
+		$query = $this->db->query($sql);
+		if($query) {
+			$data['items'] = $query->result_array();
+		}
+		// echo "<pre>",print_r($data);die();
+
+		$this->loadAdminView('admin/product_list',$data);
+
 	}
 
 

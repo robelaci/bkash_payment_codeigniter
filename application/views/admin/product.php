@@ -23,7 +23,7 @@
 									<div class="col-lg-8 col-md-8 col-sm-12">
 										<div class="form-group">
 											<input type="text" id="product_name" name="product_name"
-												value="<?php echo !empty($specific_item) ? $specific_item['category_name']: ''?>"
+												value="<?php echo !empty($specific_item) ? $specific_item['product_name']: ''?>"
 											 class="form-control" placeholder="Enter Product Name">
 										</div>
 									</div>
@@ -44,7 +44,7 @@
 								</div>
 								<div class="row form-group">
 									<div class="col-lg-4 col-md-2 col-sm-12 form-control-label">
-										<label for="product_price">Product Category</label>
+										<label for="category_id">Product Category</label>
 									</div>
 									<div class="col-lg-8 col-md-8 col-sm-12">
 										<div class="form-group">
@@ -66,11 +66,11 @@
 
 								<div class="row form-group">
 									<div class="col-lg-4 col-md-2 col-sm-12 form-control-label">
-										<label for="product_desription">Product Details</label>
+										<label for="product_description">Product Details</label>
 									</div>
 									<div class="col-lg-8 col-md-8 col-sm-12">
 										<div class="form-group">
-											<textarea rows="4" id="product_desription" name="product_desription" class="form-control" placeholder="Please type what you want..."><?php echo !empty($specific_item) ? $specific_item['category_description']: ''?></textarea>
+											<textarea rows="4" id="product_description" name="product_description" class="form-control" placeholder="Please type what you want..."><?php echo !empty($specific_item) ? $specific_item['product_description']: ''?></textarea>
 
 										</div>
 									</div>
@@ -85,7 +85,7 @@
 									</div>
 									<div class="col-lg-8 col-md-8 col-sm-12">
 										<div class="form-group">
-											<?php $specificImage = !empty($specific_item) ? base_url().'../assets/img/service/all/'. $specific_item['product_image'] : ''?>
+											<?php $specificImage = !empty($specific_item) ? base_url().'../assets/img/service/all/subservice/'. $specific_item['product_image'] : ''?>
 											<input type="file" id="product_image" name="product_image" class="dropify"
 												data-default-file="<?php echo $specificImage;?>">
 
